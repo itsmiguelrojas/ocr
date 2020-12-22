@@ -1,18 +1,18 @@
-# Reconocimiento Ûptico de caracteres en tablas de datos
-# Imagen tomada del libro "BiologÌa e investigaciÛn cientÌfica"
+# Reconocimiento √≥ptico de caracteres en tablas de datos
+# Imagen tomada del libro "Biolog√≠a e investigaci√≥n cient√≠fica"
 # de Jeffrey J. W. Baker y Garland E. Allen.
-# (TraducciÛn de Jaime F. George C. e Ina Sheila Figueroa de Uphoff.)
+# (Traducci√≥n de Jaime F. George C. e Ina Sheila Figueroa de Uphoff.)
 # El contraste de la imagen fue editado hasta un aumento del 55 %
 # para garantizar la legibilidad
 
-# Instalar librerÌas (desmarque el '#" para instalar)
+# Instalar librer√≠as (desmarque el '#" para instalar)
 # install.packages('tidyverse')
 # install.packages('hrbrthemes')
 # install.packages('tesseract')
 # install.packages('ggtext')
 # install.packages('gridExtra')
 
-# Cargar librerÌas
+# Cargar librer√≠as
 library(tidyverse)
 library(hrbrthemes)
 library(tesseract)
@@ -23,7 +23,7 @@ library(gridExtra)
 tabla_imagen <- "https://raw.githubusercontent.com/itsmiguelrojas/ocr/main/tabla_editada.jpg"
 tabla_data_raw <- ocr_data(tabla_imagen)
 
-# Transformar caracteres en n˙mericos
+# Transformar caracteres en n√∫mericos
 tabla_data <- as.numeric(gsub(",",".",tabla_data_raw$word))
 
 # Eliminar imagen y raw
@@ -68,17 +68,15 @@ modelo <- lm(longitud ~ observadores, longitud_cola)
 anova(modelo)
 
 # Response: longitud
-# Df Sum Sq Mean Sq F value Pr(>F)
+#              Df Sum Sq Mean Sq F value Pr(>F)
 # observadores  2   6.43  3.2167  0.2188 0.8044
 # Residuals    42 617.44 14.7009
 
-# ConclusiÛn: no hay una diferencia significativa entre las
+# Conclusi√≥n: no hay una diferencia significativa entre las
 # mediciones de los tres observadores
 
-aov.modelo <- aov(modelo)
-
-# Hacer gr·fico de densidad
-main.title <- expression('Longitud de la cola de\nejemplares de ratones del gÈnero ' *italic(Peromyscus)*'')
+# Hacer gr√°fico de densidad
+main.title <- expression('Longitud de la cola de\nejemplares de ratones del g√©nero ' *italic(Peromyscus)*'')
 
 density.plot <- longitud_cola %>%
   ggplot(aes(x = longitud, fill = observadores)) +
@@ -87,8 +85,8 @@ density.plot <- longitud_cola %>%
     x = 'Longitud',
     y = 'Frecuencia',
     title = main.title,
-    subtitle = 'Datos tomados de la tabla 5-3 (p·g. 70)',
-    caption = 'Baker, J; Allen, G. (1970). BiologÌa e investigaciÛn cientÌfica (George, F., Uphoff, I., Trad.).\nFondo Educativo Interamericano S. A., Massachussets, EUA.'
+    subtitle = 'Datos tomados de la tabla 5-3 (p√°g. 70)',
+    caption = 'Baker, J; Allen, G. (1970). Biolog√≠a e investigaci√≥n cient√≠fica (George, F., Uphoff, I., Trad.).\nFondo Educativo Interamericano S. A., Massachussets, EUA.'
   ) +
   scale_fill_manual(values = c('#5E3E56','#C87013','#FDFF35')) +
   theme_ipsum() +
@@ -108,7 +106,7 @@ tabla <- data.frame(
 # Cambiar nombre de las columnas
 colnames(tabla) <- c('Observador 1','Observador 2','Observador 3')
 
-# Juntar gr·ficos
+# Juntar gr√°ficos
 grid.arrange(
   density.plot,
   tableGrob(tabla, rows = NULL),
