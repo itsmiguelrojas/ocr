@@ -14,9 +14,7 @@ A continuación, buscamos la ruta de la imagen para importar los datos:
 
 `data <- ocr_data(\\ruta\\del\\archivo.jpg)`
 
-Los datos deben aparecer en la columna `word` de la tabla recién generada. Los datos creados son de tipo **caracter**. Para transformarlos en **datos numéricos** usamos 
-
-la función `as.numeric`. Si estos vienen separados por comas, usamos la función `gsub` para reemplazarlas por puntos:
+Los datos deben aparecer en la columna `word` de la tabla recién generada. Los datos creados son de tipo **caracter**. Para transformarlos en **datos numéricos** usamos  la función `as.numeric`. Si estos vienen separados por comas, usamos la función `gsub` para reemplazarlas por puntos:
 
 `var_num <- as.numeric(gsub(",",".",data$word))`
 
