@@ -1,8 +1,6 @@
 # Reconocimiento óptico de caracteres (OCR) para extraer data
 
-Extraer datos puede ser una tarea tediosa de por sí, y más aún cuando la información no se encuentra digitalizada. En este ejemplo, he querido usar el paquete [Tesseract]
-
-(https://github.com/tesseract-ocr/tesseract) para tomar datos de una tabla impresa e importarlos al programa.
+Extraer datos puede ser una tarea tediosa de por sí, y más aún cuando la información no se encuentra digitalizada. En este ejemplo, he querido usar el paquete [Tesseract](https://github.com/tesseract-ocr/tesseract) para tomar datos de una tabla impresa e importarlos al programa.
 
 Para instalar Tesseract, ejecutamos el siguiente código:
 
