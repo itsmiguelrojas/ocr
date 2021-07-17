@@ -20,7 +20,7 @@ library(ggtext)
 library(gridExtra)
 
 # Reconocimiento de imagen
-tabla_imagen <- "https://raw.githubusercontent.com/itsmiguelrojas/ocr/main/tabla_editada.jpg"
+tabla_imagen <- "tabla_editada.jpg"
 tabla_data_raw <- ocr_data(tabla_imagen)
 
 # Transformar caracteres en númericos
@@ -80,7 +80,7 @@ main.title <- expression('Longitud de la cola de\nejemplares de ratones del gén
 
 density.plot <- longitud_cola %>%
   ggplot(aes(x = longitud, fill = observadores)) +
-  geom_histogram(bins = 7, color = 'black') +
+  geom_histogram(bins = 5, color = 'black', position = 'identity') +
   labs(
     x = 'Longitud',
     y = 'Frecuencia',
@@ -88,6 +88,7 @@ density.plot <- longitud_cola %>%
     subtitle = 'Datos tomados de la tabla 5-3 (pág. 70)',
     caption = 'Baker, J; Allen, G. (1970). Biología e investigación científica (George, F., Uphoff, I., Trad.).\nFondo Educativo Interamericano S. A., Massachussets, EUA.'
   ) +
+  facet_wrap(observadores ~ ., nrow = 3, ncol = 1) +
   scale_fill_manual(values = c('#5E3E56','#C87013','#FDFF35')) +
   theme_ipsum() +
   guides(fill = guide_legend(title = ''))
